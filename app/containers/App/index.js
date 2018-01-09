@@ -12,18 +12,19 @@
  */
 
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
-import HomePage from 'containers/HomePage/Loadable';
-import NotFoundPage from 'containers/NotFoundPage/Loadable';
+import EpisodeRepository from 'containers/EpisodeRepository';
+import Navbar from 'containers/Navbar';
 
 export default function App() {
   return (
-    <div>
+    <div style={{ flexFlow: 'column-reverse', display: 'flex' }}>
       <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route component={NotFoundPage} />
+        <Route path="/episodes" component={EpisodeRepository} />
+        <Redirect to="/episodes" />
       </Switch>
+      <Navbar />
     </div>
   );
 }
